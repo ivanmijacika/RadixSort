@@ -27,7 +27,7 @@ public class Radix{
       if (length(data.get(0)) > maxLength){
 	maxLength = length(data.get(0));
       }
-      buckets[nth(data.get(0), 1)].add(data.get(0));
+      buckets[nth(data.get(0), 0)].add(data.get(0));
       data.remove(0);
     }
     merge(data, buckets);
