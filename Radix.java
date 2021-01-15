@@ -24,9 +24,7 @@ public class Radix{
       buckets[i] = new SortableLinkedList(); //boxes
     }
     while (data.size()>0){
-      if (length(data.get(0)) > maxLength){
-	maxLength = length(data.get(0));
-      }
+      if (length(data.get(0)) > maxLength) maxLength = length(data.get(0));
       buckets[nth(data.get(0), 0)].add(data.get(0));
       data.remove(0);
     }
@@ -51,9 +49,7 @@ public class Radix{
       posneg[i] = new SortableLinkedList();
     }
     while(data.size()>0){
-      if(length(data.get(0)) > maxLength){
-        maxLength = length(data.get(0));
-      }
+      if(length(data.get(0)) > maxLength) maxLength = length(data.get(0));
       buckets[nth(data.get(0), 0)].add(data.get(0));
       data.remove(0);
     }
@@ -65,7 +61,12 @@ public class Radix{
       }
       merge(data, buckets);
     }
-    //???? Something to do with signs???
+    while (data.size()>0){
+      if (data.get(0)>0) posneg[1].add(data.get(0));
+      else posneg[0].add(0, data.get(0));
+      data.remove(0);
+    }
+    merge(data, posneg);
   }
 
 }
